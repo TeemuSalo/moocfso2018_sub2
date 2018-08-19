@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import axios from 'axios'
 
 // Components for exercises 2.1 - 2.5
 import Kurssi from './Kurssi'
@@ -13,17 +14,20 @@ class Puhelinluettelo extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      persons: [
-        { name: 'Arto Hellas', number: '040-123456' },
-        { name: 'Martti Tienari', number: '040-321789' },
-        { name: 'Arto Järvinen', number: '040-654987' },
-        { name: 'Lea Kutvonen', number: '040-987654' }
-      ],
+      persons: [],
       newName: '',
       newNumber: '',
       canSubmit: true,
       filter: '',
     }
+  }
+
+  componentDidMount() {
+    axios
+      .get('http://localhost:3001/persons')
+      .then(response => {
+        this.setState({ persons: response.data })
+      })
   }
 
   // Get values from child component arguments
