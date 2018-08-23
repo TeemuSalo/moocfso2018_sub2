@@ -10,6 +10,9 @@ import App from './App'
 import Filter from './Filter'
 import AddPerson from './AddPerson';
 
+// Component for exercises 2.12 - 2.13
+import Countries from './Countries'
+
 class Puhelinluettelo extends React.Component {
   constructor(props) {
     super(props)
@@ -101,5 +104,6 @@ class Puhelinluettelo extends React.Component {
 }
 
 ReactDOM.render(
-  <Puhelinluettelo />, document.getElementById('root')
+  // <Puhelinluettelo />, document.getElementById('root')
+  <Countries />, document.getElementById('root')
 )
