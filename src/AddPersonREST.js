@@ -1,34 +1,23 @@
 import React from 'react';
 
-class AddPerson extends React.Component {
+class AddPersonREST extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
             newName: '',
             newNumber: '',
-            canSubmit: true,
         }
     }
 
     handleNameChange = (e) => {
 
         const newName = e.target.value
-        let canSubmit = true
-
-        // Disable submit button if name already exists in state
-        this.props.persons.forEach(({ name }) => {
-            if (newName.toLowerCase() === name.toLowerCase()) {
-                canSubmit = false
-            }
-        })
-
-        this.setState({ newName, canSubmit })
+        this.setState({ newName })
     }
 
     handleNumberChange = (e) => {
 
         const newNumber = e.target.value
-
         this.setState({ newNumber })
     }
 
@@ -38,9 +27,22 @@ class AddPerson extends React.Component {
         // Don't send empty names
         if (this.state.newName !== '') {
 
-            const sendMsg = { name: this.state.newName, number: this.state.newNumber }
+            let replace = false
 
-            this.props.handlePersonSubmit(sendMsg)
+            // If name exists in state we send replace flag as true
+            this.props.persons.forEach(({ name, id }) => {
+                if (this.state.newName.toLowerCase() === name.toLowerCase()) {
+                    replace = id
+                }
+            })
+
+            const sendMsg = { 
+                name: this.state.newName, 
+                number: this.state.newNumber,
+                replace: replace
+            }
+
+            this.props.handleAddPerson(sendMsg)
 
             this.setState({ newName: '', newNumber: '' })
         }
@@ -62,7 +64,7 @@ class AddPerson extends React.Component {
                         numero:<br /><input style={medpad} value={this.state.newNumber} onChange={this.handleNumberChange} />
                     </div>
                     <div style={{ padding: "10px 0px" }}>
-                        <button className="add" disabled={!this.state.canSubmit} type="submit">lisää</button>
+                        <button className="add" type="submit">lisää</button>
                     </div>
                 </form>
             </div>
@@ -70,4 +72,4 @@ class AddPerson extends React.Component {
     }
 }
 
-export default AddPerson
+export default AddPersonREST

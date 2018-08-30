@@ -1,5 +1,102 @@
 body {
-  margin: 0;
-  padding: 0;
+  /* margin: 0; */
+  /* padding: 0; */
   font-family: sans-serif;
+}
+
+table {
+  border: 0; 
+  border-spacing: 0px;
+}
+
+tr {
+  vertical-align: bottom;
+}
+
+td {
+  padding: 3px;
+}
+
+.success {
+  position:absolute;
+  background-color: #3d8516;
+  height: 100%;
+  width: calc(100vw - 10px);
+  opacity: 0.0;
+  top:0;
+  transition: opacity 1s;
+}
+
+.success h2 {
+  font-size: 200px;
+  text-align: center;
+  padding-top: 30%;
+  margin: 0;
+  opacity: 0.4;
+}
+
+.error {
+  position:absolute;
+  background-color: #a02121;
+  height: 100%;
+  width: calc(100vw - 10px);
+  opacity: 0.0;
+  top:0;
+  transition: opacity 1s;
+}
+
+.error h2 {
+  font-size: 180px;
+  text-align: center;
+  padding-top: 300px;
+  margin: 0;
+  opacity: 0.4;
+}
+
+button.add {
+  background-color:#1db345;
+	-moz-border-radius:15px;
+	-webkit-border-radius:15px;
+	border-radius:15px;
+	border:1px solid #ffffff;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:15px;
+	padding:5px 20px;
+	text-decoration:none;
+}
+button.add:enabled:hover {
+	background-color:#3d8516;
+}
+button:disabled{
+  background-color:#4b4d4a;
+  opacity: 0.6;
+}
+button.add {
+	position:relative;
+	top:1px;
+}
+
+button.del {
+	background-color:#ad2525;
+	-moz-border-radius:15px;
+	-webkit-border-radius:15px;
+	border-radius:10px;
+	border:1px solid #ffffff;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:12px;
+	padding:3px 10px;
+	text-decoration:none;
+}
+button.del:hover {
+	background-color:#d31717;
+}
+button.del {
+	position:relative;
+	top:1px;
 }
